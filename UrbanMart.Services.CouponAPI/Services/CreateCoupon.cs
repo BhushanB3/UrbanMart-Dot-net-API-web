@@ -16,8 +16,8 @@ namespace UrbanMart.Services.CouponAPI.Services
 
         public class Result
         {
-            public HttpStatusCode code;
-            public string? Message { get; set; }
+            public HttpStatusCode StatusCode;
+            public string? Message { get; set; } = "";
         }
 
         public class Handler : IRequestHandler<Command, Result>
@@ -40,7 +40,7 @@ namespace UrbanMart.Services.CouponAPI.Services
                 {
                     return new Result
                     {
-                        code = HttpStatusCode.Conflict,
+                        StatusCode = HttpStatusCode.Conflict,
                         Message = "Coupon already exists"
                     };
                 }
@@ -58,7 +58,7 @@ namespace UrbanMart.Services.CouponAPI.Services
                 {
                     return new Result
                     {
-                        code = HttpStatusCode.Created,
+                        StatusCode = HttpStatusCode.Created,
                     };
                 }
                 return new Result();

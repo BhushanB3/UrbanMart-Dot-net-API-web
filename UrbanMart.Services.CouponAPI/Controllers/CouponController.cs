@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using UrbanMart.Services.CouponAPI.Data;
+using UrbanMart.Services.CouponAPI.Models;
 using UrbanMart.Services.CouponAPI.Services;
 
 namespace UrbanMart.Services.CouponAPI.Controllers
@@ -21,24 +24,24 @@ namespace UrbanMart.Services.CouponAPI.Controllers
         [Route("GetCoupon")]
         public async Task<ActionResult> GetAllCoupons([FromQuery] Guid? userId)
         {
-            var coupons = await _mediator.Send(new GetAllCoupons.Query() { UserId = userId});
-            if (coupons == null)
+            var result = await _mediator.Send(new GetAllCoupons.Query() { UserId = userId});
+            if (result == null)
             {
                 return NotFound("No coupon for this userId");
             }
-            return Ok(coupons);
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("GetCouponByCode")]
         public async Task<ActionResult> GetCouponByCode([FromQuery] string code)
         {
-            var coupons = await _mediator.Send(new GetCouponByCode.Query() { Code = code });
-            if(coupons == null)
+            var result = await _mediator.Send(new GetCouponByCode.Query() { Code = code });
+            if(result == null)
             {
                 return NotFound("No coupon by this Id");
             }
-            return Ok(coupons);
+            return Ok(result);
         }
 
         [HttpPost]
@@ -46,14 +49,15 @@ namespace UrbanMart.Services.CouponAPI.Controllers
         public async Task<ActionResult> AddCoupon([FromBody] CreateCoupon.Command query)
         {
             var result = await _mediator.Send(query);
-            return Ok(result);
+            return StatusCode((int)result.StatusCode, result);
         }
 
         [HttpDelete]
         public async Task<ActionResult> DeleteCoupon([FromQuery] Guid id)
         {
             var result = await _mediator.Send(new DeleteCoupon.Command() {  CouponId = id });
-            return Ok(result);
+            return StatusCode((int)result.StatusCode, result);
+
         }
     }
 }
