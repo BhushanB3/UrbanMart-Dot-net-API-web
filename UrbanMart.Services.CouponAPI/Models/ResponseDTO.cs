@@ -2,7 +2,7 @@
 
 namespace UrbanMart.Services.CouponAPI.Models
 {
-    public static class ResponseDTO
+    public class ResponseDTO
     {
         public static IActionResult Success(Object obj, bool isSuccess)
         {
