@@ -11,6 +11,7 @@ namespace UrbanMart.Services.CouponAPI.Models
         public string Code{ get; set; }
         [Required]
         public double Discount{ get; set; }
+        public double MinimumAmount{ get; set; }
         public bool IsDeprecated{ get; set; }
         public bool IsActive{ get; set; }
         public DateTime CreatedOn{ get; set; }

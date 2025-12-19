@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//this call our constructor from where data is passed to DbContext which creates connections per HTTP Request
 builder.Services.AddDbContext<ApplicationDBContext>(configuration =>
 {
     configuration.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -38,7 +39,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 ApplyPendingMigration();
+
 app.MapControllers();
 
 app.Run();
