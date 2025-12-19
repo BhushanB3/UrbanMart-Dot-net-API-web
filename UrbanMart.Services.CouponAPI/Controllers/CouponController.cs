@@ -2,15 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using UrbanMart.Services.CouponAPI.Data;
-using UrbanMart.Services.CouponAPI.Models;
 using UrbanMart.Services.CouponAPI.Services;
 
 namespace UrbanMart.Services.CouponAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/Coupon")] // base URL
+    [ApiController] // tells ASP.NET Core that this is an API controller
     public class CouponController : ControllerBase
     {
         private readonly IMediator _mediator;
