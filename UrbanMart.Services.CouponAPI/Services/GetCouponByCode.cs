@@ -9,21 +9,12 @@ namespace UrbanMart.Services.CouponAPI.Services
 {
     public static class GetCouponByCode
     {
-        public class Query: IRequest<Result>
+        public class Query: IRequest<CouponDto>
         {
-            public string Code { get; set; }
-        }
-
-        public class Result
-        {
-            public Guid Id { get; set; }
             public required string Code { get; set; }
-            public double Discount { get; set; }
-            public bool IsDeprecated { get; set; }
-            public bool IsActive { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Result>
+        public class Handler : IRequestHandler<Query, CouponDto>
         {
             private readonly ApplicationDBContext _db;
             private IMapper _mapper;
@@ -34,14 +25,14 @@ namespace UrbanMart.Services.CouponAPI.Services
                 _mapper = mapper;
             }
 
-            public async Task<Result> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<CouponDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var coupon = await _db.Coupons.FirstOrDefaultAsync(
-                                        x => x.Code == request.Code && 
+                                        x => x.Code.ToLower() == request.Code.ToLower() && 
                                         !x.IsDeprecated);
                 if(coupon != null)
                 {
-                    var result = _mapper.Map<Result>(coupon);
+                    var result = _mapper.Map<CouponDto>(coupon);
                     return result;
                 }
                 else

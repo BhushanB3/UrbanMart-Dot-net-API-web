@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using UrbanMart.Services.CouponAPI.Models;
+using UrbanMart.Services.CouponAPI.Models.DTO;
 using UrbanMart.Services.CouponAPI.Services;
 
 namespace UrbanMart.Services.CouponAPI
@@ -9,8 +10,9 @@ namespace UrbanMart.Services.CouponAPI
         public MappingConfig()
         {
             // Coupon → Result (GetAllCoupons.Result)
-            CreateMap<Coupon, GetAllCoupons.Result>();
-            CreateMap<Coupon, GetCouponByCode.Result>();
+            CreateMap<Coupon, CouponDto>();
+
+            CreateMap<CouponDto, Coupon>();
         }
 
         //public static MapperConfiguration RegisterMaps()

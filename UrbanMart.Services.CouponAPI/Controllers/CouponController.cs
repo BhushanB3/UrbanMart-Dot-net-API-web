@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using UrbanMart.Services.CouponAPI.Services;
 
@@ -45,8 +43,23 @@ namespace UrbanMart.Services.CouponAPI.Controllers
         [Route("AddCoupon")]
         public async Task<ActionResult> AddCoupon([FromBody] CreateCoupon.Command query)
         {
-            var result = await _mediator.Send(query);
+            var command = new CreateCoupon.Command()
+            {
+                Code = query.Code,
+                Discount = query.Discount,
+                MinimumAmount = query.MinimumAmount,
+            };
+            var result = await _mediator.Send(command);
             return StatusCode((int)result.StatusCode, result);
+        }
+
+        [HttpPut]
+        [Route("{id:guid}/UpdateCoupon")]
+        public async Task<ActionResult> UpdateCoupon([FromBody] UpdateCoupon.Request request, Guid id)
+        {
+            request.Id = id;
+            var result = await _mediator.Send(request);
+            return Ok(result);
         }
 
         [HttpDelete]

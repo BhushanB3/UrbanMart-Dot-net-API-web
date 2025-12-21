@@ -1,7 +1,8 @@
-using UrbanMart.Services.CouponAPI.Data;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UrbanMart.Services.CouponAPI;
+using UrbanMart.Services.CouponAPI.Data;
+using UrbanMart.Services.CouponAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,10 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.CustomSchemaIds(type => type.FullName.Replace("+", "."));
+});
 
 var app = builder.Build();
 

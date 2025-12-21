@@ -13,8 +13,8 @@ namespace UrbanMart.Services.CouponAPI.Services
         }
         public class Result
         {
-            public HttpStatusCode StatusCode;
-            public string Message;
+            public HttpStatusCode StatusCode { get; set; }
+            public string? Message {  get; set; }
         }
 
         public class Handler : IRequestHandler<Command, Result>
