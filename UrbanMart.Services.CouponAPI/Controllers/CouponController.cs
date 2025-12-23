@@ -43,13 +43,7 @@ namespace UrbanMart.Services.CouponAPI.Controllers
         [Route("AddCoupon")]
         public async Task<ActionResult> AddCoupon([FromBody] CreateCoupon.Command query)
         {
-            var command = new CreateCoupon.Command()
-            {
-                Code = query.Code,
-                Discount = query.Discount,
-                MinimumAmount = query.MinimumAmount,
-            };
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(query);
             return StatusCode((int)result.StatusCode, result);
         }
 
