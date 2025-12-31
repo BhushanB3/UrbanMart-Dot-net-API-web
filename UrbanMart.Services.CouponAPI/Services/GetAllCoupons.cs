@@ -34,7 +34,7 @@ namespace UrbanMart.Services.CouponAPI.Services
                 }
                 else
                 {
-                    return null;
+                    return Enumerable.Empty<CouponDto>();
                 }
             }
         }

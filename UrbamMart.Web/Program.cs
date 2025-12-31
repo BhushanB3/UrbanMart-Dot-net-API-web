@@ -1,7 +1,18 @@
+using UrbamMart.Web.Services.IService;
+using UrbamMart.Web.Services.Service;
+using UrbamMart.Web.Utilities;
+
 var builder = WebApplication.CreateBuilder(args);
+
+StaticDetails.CouponAPIBase = builder.Configuration.GetValue<string>("ServiceURls:CouponAPI");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<IBaseService, BaseService>();
+builder.Services.AddScoped<ICouponService, CouponService>();
 
 var app = builder.Build();
 
