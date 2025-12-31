@@ -48,15 +48,15 @@ namespace UrbanMart.Services.CouponAPI.Controllers
         }
 
         [HttpPut]
-        [Route("{id:guid}/UpdateCoupon")]
-        public async Task<ActionResult> UpdateCoupon([FromBody] UpdateCoupon.Request request, Guid id)
+        [Route("UpdateCoupon")]
+        public async Task<ActionResult> UpdateCoupon([FromBody] UpdateCoupon.Request request)
         {
-            request.Id = id;
             var result = await _mediator.Send(request);
             return Ok(result);
         }
 
         [HttpDelete]
+        [Route("DeleteCoupon")]
         public async Task<ActionResult> DeleteCoupon([FromQuery] Guid id)
         {
             var result = await _mediator.Send(new DeleteCoupon.Command() {  CouponId = id });

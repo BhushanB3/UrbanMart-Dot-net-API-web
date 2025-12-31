@@ -48,7 +48,7 @@ namespace UrbanMart.Services.CouponAPI.Services
                 {
                     return new Result
                     {
-                        StatusCode = HttpStatusCode.NoContent,
+                        StatusCode = HttpStatusCode.Gone,
                         Message = "Deleted"
                     };
                 }
