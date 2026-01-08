@@ -10,7 +10,6 @@ namespace UrbamMart.Web.Services.Service
     public class CouponService : ICouponService
     {
         private readonly IBaseService _IBaseService;
-        //private readonly string BaseUrl = "/api/Coupon";
         private readonly string BaseUrl = CouponAPIBase + "/api/Coupon";
 
         public CouponService(IBaseService baseService)
