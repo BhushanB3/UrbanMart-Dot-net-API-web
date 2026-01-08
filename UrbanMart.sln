@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrbanMart.Services.CouponAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrbamMart.Web", "UrbamMart.Web\UrbamMart.Web.csproj", "{B7C26388-5D42-43A3-97C0-28076F9548A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrbanMart.Services.AuthAPI", "UrbanMart.Services.AuthAPI\UrbanMart.Services.AuthAPI.csproj", "{4286AA0C-4B33-42C5-90A9-03AE87684091}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{B7C26388-5D42-43A3-97C0-28076F9548A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C26388-5D42-43A3-97C0-28076F9548A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C26388-5D42-43A3-97C0-28076F9548A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4286AA0C-4B33-42C5-90A9-03AE87684091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4286AA0C-4B33-42C5-90A9-03AE87684091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4286AA0C-4B33-42C5-90A9-03AE87684091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4286AA0C-4B33-42C5-90A9-03AE87684091}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7A6B5CFA-29F0-4EBF-960E-9B3010FC295B} = {93CE8F9F-442D-465D-8D99-D3ED9C65FA2B}
 		{B7C26388-5D42-43A3-97C0-28076F9548A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{4286AA0C-4B33-42C5-90A9-03AE87684091} = {93CE8F9F-442D-465D-8D99-D3ED9C65FA2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {45B28EFF-96DD-4922-AD1A-6DE27DFAA843}
