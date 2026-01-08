@@ -17,14 +17,14 @@ namespace UrbamMart.Web.Services.Service
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<T?> SendAsync<T>(RequestDto requestDto)
+        public async Task<T?> SendAsync<T>(RequestDto requestDto, bool withBearer)
         {
             try
             {
                 HttpClient client = _httpClientFactory.CreateClient("UrbanMart");
                 HttpRequestMessage Message = new();
                 Message.Headers.Add("Accept", "application/json"); // tells server we want json response
-
+                
                 //token handling
 
                 Message.RequestUri = new Uri(requestDto.Url);

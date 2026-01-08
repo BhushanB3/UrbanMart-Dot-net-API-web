@@ -5,6 +5,7 @@ using UrbamMart.Web.Utilities;
 var builder = WebApplication.CreateBuilder(args);
 
 StaticDetails.CouponAPIBase = builder.Configuration.GetValue<string>("ServiceURls:CouponAPI");
+StaticDetails.AuthAPIBase = builder.Configuration.GetValue<string>("ServiceURls:AuthAPI");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -13,6 +14,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
